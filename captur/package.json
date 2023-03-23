@@ -1,17 +1,17 @@
 {
-  "name": "@cjfff/captur",
+  "name": "@chenxxx/captur",
   "description": "",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "license": "MIT",
   "author": "https://github.com/cjfff",
-  "main": "dist/captur.js",
-  "module": "dist/captur.mjs",
-  "browser": "dist/captur.global.js",
+  "main": "dist/captur.umd.js",
+  "module": "dist/captur.es.js",
+  "browser": "dist/captur.js",
   "types": "dist/captur.d.ts",
   "exports": {
     ".": {
-      "import": "dist/captur.mjs",
-      "require": "dist/captur.js",
+      "import": "dist/captur.es.js",
+      "require": "dist/captur.umd.js",
       "types": "dist/captur.d.ts"
     },
     "./css": "dist/captur.css",
