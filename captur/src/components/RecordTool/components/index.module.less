@@ -1,0 +1,43 @@
+.recordBtn,
+.stopBtn,
+.closeBtn {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  cursor: pointer;
+
+  > svg {
+    font-size: 34px;
+  }
+}
+
+.mask {
+  position: fixed;
+  z-index: 2147483642;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(128, 144, 160, 0.3);
+}
+
+.closeBtn {
+  background-color: #fff;
+}
+
+.closeIcon {
+  height: 18px;
+  width: 18px;
+}
+
+.btn {
+  &:hover {
+    background-color: #f4f4f4;
+  }
+}

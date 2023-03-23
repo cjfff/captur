@@ -1,0 +1,5 @@
+# Source folders
+/src
+
+# Npm or Yarn
+node_modules

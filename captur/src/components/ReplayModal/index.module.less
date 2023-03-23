@@ -1,0 +1,35 @@
+.mask {
+  position: fixed;
+  z-index: 2147483645;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.closeIcon {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  right: 20px;
+  top: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  cursor: pointer;
+
+  > svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 20px;
+    fill: rgba(255, 255, 255, 0.7);
+  }
+}

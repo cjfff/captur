@@ -1,0 +1,38 @@
+.addButton {
+  width: 50%;
+}
+
+.formWrap {
+  :global {
+    input {
+      padding: 8px 12px;
+      width: 100%;
+      min-width: 290px;
+    }
+    .ant-form-item {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.buttonWrap {
+  display: flex;
+  > button {
+    width: 50%;
+    height: 36px;
+
+    &:last-child {
+      margin-left: 12px;
+    }
+  }
+}
+
+.recordItem {
+  margin-bottom: 12px !important;
+}
+
+.policyWrap {
+  :global(.ant-checkbox-input) {
+    z-index: -1 !important;
+  }
+}

@@ -1,0 +1,27 @@
+.powerBy {
+  text-align: center;
+  padding-bottom: 8px;
+  font-size: 12px;
+  color: #abb9cc;
+  letter-spacing: 0.06em;
+
+  > span:last-child {
+    display: inline-block;
+    margin-left: 4px;
+    font-weight: 500;
+    color: #748399;
+  }
+}
+
+.modal {
+  z-index: 2147483646 !important;
+
+  :global(.ant-modal) {
+    width: auto;
+    min-width: 400px;
+  }
+
+  :global(.ant-modal-header) {
+    border-bottom: none;
+  }
+}

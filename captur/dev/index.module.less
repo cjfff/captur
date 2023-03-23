@@ -1,0 +1,60 @@
+.addButton {
+  width: 50%;
+}
+
+.formWrap {
+  :global {
+    input {
+      padding: 8px 12px;
+      width: 100%;
+      min-width: 290px;
+    }
+    .ant-form-item {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.buttonWrap {
+  display: flex;
+  > button {
+    width: 50%;
+    height: 36px;
+
+    &:last-child {
+      margin-left: 12px;
+    }
+  }
+}
+
+.policyWrap {
+  font-size: 14px;
+  font-weight: 400;
+  color: #00112f;
+  .privatePolicy {
+    cursor: pointer;
+    display: inline-block;
+  }
+  input {
+    min-width: auto;
+  }
+}
+
+.policyText {
+  color: #00112f;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 30px 10px;
+
+  > a {
+    color: #15bbb9;
+  }
+}
+
+.recordItem {
+  margin-bottom: 12px !important;
+}
+
+.policyModal {
+  z-index: 2147483647 !important;
+}
