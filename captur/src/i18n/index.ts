@@ -2,7 +2,7 @@ import { I18N_KEY } from '@/Context'
 import { en } from '@/locale/en'
 
 const L = 'en' // global locale
-const Ls = {} // global loaded locale
+const Ls = {} as any // global loaded locale
 
 Ls[L] = en
 
@@ -10,9 +10,9 @@ const in18Map = {
   get map() {
     return Ls
   },
-  t: function (key?: string, data?: Record<string, any>) {
+  t: function (key: string, data?: Record<string, any>) {
     const lang = window.localStorage.getItem(I18N_KEY)
-    const map = Ls[lang] || {}
+    const map = Ls[lang || 'en'] || {}
 
     const word = map[key] || ''
 

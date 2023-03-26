@@ -1,7 +1,7 @@
 {
   "name": "@chenxxx/captur",
   "description": "",
-  "version": "0.0.3-beta1",
+  "version": "0.0.3-beta2",
   "license": "MIT",
   "author": "https://github.com/cjfff",
   "main": "dist/captur.umd.js",

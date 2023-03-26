@@ -17768,7 +17768,7 @@ const Jr = {
     return Pl;
   },
   t: function(e, t) {
-    const n = window.localStorage.getItem(OC), i = (Pl[n] || {})[e] || "";
+    const n = window.localStorage.getItem(OC), i = (Pl[n || "en"] || {})[e] || "";
     return t ? Object.entries(t).reduce((o, [a, l]) => o.replace(`{{${a}}}`, l), i) : i;
   },
   locale(e, t) {
@@ -19614,8 +19614,8 @@ function gp() {
     store: d.useMemo(() => new RT(e == null ? void 0 : e.uid), [e == null ? void 0 : e.uid])
   };
 }
-const _T = "/ones/api/v1", AT = async (e) => fetch({
-  url: `${_T}/create`,
+const _T = "/captur/apis", AT = async (e) => fetch({
+  url: `${e.prefix}${_T}/feedback`,
   body: JSON.stringify(e)
 }), MT = (e) => e.replace(/[A-Z]/g, (t) => `_${t.toLowerCase()}`);
 function FT() {
@@ -19638,9 +19638,10 @@ function FT() {
       const f = {
         ...u,
         uid: i == null ? void 0 : i.uid,
-        app_id: i == null ? void 0 : i.appId,
-        report_type: a,
-        ...c()
+        appId: i == null ? void 0 : i.appId,
+        recordJson: JSON.stringify(r),
+        ...c(),
+        prefix: i == null ? void 0 : i.prefix
       };
       await AT(f), Jy.success(l("feedback.success")), o();
     } catch {

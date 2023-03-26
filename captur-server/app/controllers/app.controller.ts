@@ -1,7 +1,7 @@
 import {
   Post,
   JsonController,
-  BodyParam,
+  Body,
   Get,
   Param,
   Delete,
@@ -15,8 +15,8 @@ export class SessionsController {
   constructor(private appService: AppService) {}
 
   @Post('/')
-  async create(@BodyParam('name') name: string) {
-    return this.appService.create(name)
+  async create(@Body() body: any) {
+    return this.appService.create(body)
   }
 
   @Delete('/:id')
@@ -29,7 +29,6 @@ export class SessionsController {
     return this.appService.getApps()
   }
 
- 
   @Get('/:id')
   async getById(@Param('id') id: number) {
     return this.appService.getById(id)

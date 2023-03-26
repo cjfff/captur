@@ -1,5 +1,5 @@
+# Dest resouces
+/build
+# Npm or Yarn
 node_modules
-dist
-mock
-public
-
+vite.config.ts 

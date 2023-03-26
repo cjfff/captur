@@ -10,7 +10,7 @@ import { FeedbackService } from '../services'
 import { Service } from 'typedi'
 import { Prisma } from '@prisma/client';
 
-@JsonController()
+@JsonController('feedback')
 @Service()
 export class FeedbackController {
   constructor(private feedbackService: FeedbackService) {}

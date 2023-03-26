@@ -10,6 +10,7 @@ datasource db {
 model App {
   id        Int      @id @default(autoincrement())
   name String
+  appId String
   valid Int @default(1)
   createdAt DateTime @default(now())
 }

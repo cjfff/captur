@@ -1,0 +1,45 @@
+.layout {
+    height: calc(100vh - 63px);
+    background-color: #efefef;
+    padding: 24px;
+}
+
+.header {
+    padding: 12px;
+    border-bottom: 1px solid #efefef;
+    display: flex;
+    justify-content: space-between;
+
+    > span:first-child {
+        font-size: 16px;;
+       > span {
+        display: inline-block;
+        margin-right: 10px;;
+       }     
+    }
+}
+
+.content {
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.list {
+    padding: 16px;
+}
+
+.cardWrap {
+    margin-bottom: 16px;
+}
+
+.card {
+    background: linear-gradient(141deg,#bfc5e2,#1fc8db 51%,#2cb5e8 75%);
+    color: #fff;
+    cursor: pointer;
+
+    :global {
+        .ant-pro-card-title {
+            color: #fff;
+        }
+    }
+}

@@ -1,62 +1,46 @@
 module.exports = {
-  root: true,
-  extends: [
-    'airbnb-base',
-    'prettier',
-    'plugin:react/recommended',
-    'plugin:import/typescript',
-    'plugin:@typescript-eslint/recommended',
-  ],
-  plugins: ['eslint-plugin-prettier'],
+  extends: ['plugin:@typescript-eslint/recommended', 'prettier', 'plugin:react-hooks/recommended'],
   parser: '@typescript-eslint/parser',
+  // parserOptions: {
+  //   project: ['./tsconfig.json'],
+  // },
   env: {
-    jest: true,
+    node: true,
   },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
+  plugins: ['@typescript-eslint', 'prettier', 'react-hooks'],
   rules: {
-    'no-shadow': 'off',
-    'no-param-reassign': ['error', { props: false }],
-    'no-console': 'off',
-    'no-plusplus': [
+    'max-len': [
       'error',
       {
-        allowForLoopAfterthoughts: true,
+        code: 140,
+        tabWidth: 2,
+        ignoreTemplateLiterals: true,
+        ignoreUrls: true,
+        ignoreStrings: true,
       },
     ],
-    'react/display-name': 'off',
-    "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off",
-    // jsx 单引号
-    'jsx-quotes': [2, 'prefer-single'],
-    'import/no-cycle': 'off', // TODO: remove
-    'import/extensions': 'off',
-    'import/no-unresolved': 'off',
-    'import/order': 'off',
-    'import/prefer-default-export': 'off',
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-    // 关闭variable必须全部大写规则
-    '@typescript-eslint/naming-convention': [
-      'error',
-      {
-        selector: 'variable',
-        modifiers: ['const'],
-        format: null,
-      },
-    ],
-    '@typescript-eslint/no-empty-function': 'off',
+    semi: ['error', 'never'],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'no-console': 'warn',
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/ban-types': 'off',
-    // 统一eslint prettier配置
-    'prettier/prettier': [
-      'warn',
-      {},
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-inferrable-types': 'off',
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/member-delimiter-style': [
+      'error',
       {
-        usePrettierrc: true,
+        multiline: {
+          delimiter: 'none',
+          requireLast: false,
+        },
+        singleline: {
+          delimiter: 'semi',
+          requireLast: false,
+        },
       },
     ],
   },
-};
+}

@@ -33,9 +33,10 @@ export function useSubmit() {
       const values = {
         ...formValue,
         uid: props?.uid,
-        app_id: props?.appId,
-        report_type: type,
-        ...convertExtraParams()
+        appId: props?.appId,
+        recordJson: JSON.stringify(events),
+        ...convertExtraParams(),
+        prefix: props?.prefix
       };
 
       await createFeedback(values);

@@ -1,72 +1,41 @@
-import * as path from 'path';
-import { defineConfig, loadEnv, PluginOption } from 'vite';
-import react from '@vitejs/plugin-react';
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
-import { viteMockServe } from 'vite-plugin-mock';
+import { defineConfig, loadEnv } from 'vite'
+import react from '@vitejs/plugin-react'
+import checker from 'vite-plugin-checker'
+import path from 'path'
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command, mode }) => {
-  const root = process.cwd();
-
-  const env = loadEnv(mode, root);
-  const { VITE_APP_PORT, VITE_APP_MOCK } = env;
-
-  const isBuild = command === 'build';
-
-  // vite 插件
-  const vitePlugins: (PluginOption | PluginOption[])[] = [
-    react(),
-    // vite-plugin-svg-icons
-    createSvgIconsPlugin({
-      // Specify the icon folder to be cached
-      iconDirs: [path.resolve(__dirname, './src/assets/iconsvg')],
-      // Specify symbolId format
-      symbolId: 'icon-[name]',
-    }),
-  ];
-  // vite-plugin-mock
-  if (VITE_APP_MOCK === 'true') {
-    vitePlugins.push(
-      viteMockServe({
-        mockPath: 'mock',
-        supportTs: true,
-        watchFiles: true,
-        localEnabled: !isBuild,
-        prodEnabled: isBuild,
-        logger: true,
-      }),
-    );
-  }
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '')
 
   return {
-    root,
-    server: {
-      host: true,
-      port: Number(VITE_APP_PORT || 3000),
-      /*
-      proxy: {
-        '/api': {
-          // 用于开发环境下的转发请求
-          // 更多请参考：https://vitejs.dev/config/#server-proxy
-          target: 'https://vitejs.dev/config/#server-proxy',
-          changeOrigin: true,
+    plugins: [
+      react({
+        babel: {
+          plugins: [
+            '@babel/plugin-proposal-optional-chaining',
+            [
+              'import',
+              {
+                libraryName: 'antd',
+                libraryDirectory: 'es',
+                style: (name) => {
+                  return `${name}/style`
+                },
+              },
+              'antd',
+            ],
+          ],
         },
-      },
-      */
-    },
-    resolve: {
-      alias: [
-        {
-          find: /^~/,
-          replacement: `${path.resolve(__dirname, './node_modules')}/`,
+      }),
+      /* 类型检查 */
+      checker({ typescript: true }),
+      /* eslint检查 */
+      checker({
+        eslint: {
+          lintCommand: 'eslint "./src/**/*.{ts,tsx}"',
         },
-        {
-          find: /@\//,
-          replacement: `${path.resolve(__dirname, './src')}/`,
-        },
-      ],
-    },
-    plugins: vitePlugins,
+      }),
+    ],
     css: {
       preprocessorOptions: {
         less: {
@@ -74,5 +43,27 @@ export default defineConfig(({ command, mode }) => {
         },
       },
     },
-  };
-});
+    resolve: {
+      alias: [
+        { find: '@', replacement: path.resolve(__dirname, 'src') },
+        { find: /^~/, replacement: '' },
+      ],
+    },
+    build: {
+      sourcemap: true,
+      outDir: 'build',
+      assetsDir: 'static',
+    },
+    server: {
+      hmr: {
+        overlay: false,
+      },
+      proxy: {
+        '/captur': {
+          target: env.VITE_API_URL,
+          changeOrigin: true,
+        },
+      },
+    },
+  }
+})

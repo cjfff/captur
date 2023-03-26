@@ -27,6 +27,8 @@ export type IFeedbackProps = {
 
   appId?: string
 
+  prefix?: string
+
   /**
    * 多语言
    */

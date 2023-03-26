@@ -1,14 +1,12 @@
-const host = '/ones/api/v1'
+const host = '/captur/apis'
 
 interface ICreateFeedback {
-  app_id?: string
-  uid?: string
-  username?: string
-  email?: string
-  description?: string
-  title?: string
-  replay_url?: string
-  countryCode: string
+  appId: number
+  email: string
+  description: string
+  valid?: number
+  recordJson: string
+  prefix?: string
 }
 
 /**
@@ -17,8 +15,10 @@ interface ICreateFeedback {
  * @returns
  */
 export const createFeedback = async (data: ICreateFeedback) => {
-  return fetch({
-    url: `${host}/create`,
+  return fetch(`${data.prefix}${host}/feedback`,{
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(data)
   })
 }

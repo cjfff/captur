@@ -3,11 +3,9 @@ import prisma from "app/helpers/client";
 
 @Service()
 export class AppService {
-  async create(name: string) {
+  async create(data) {
     return prisma.app.create({
-      data: {
-        name
-      }
+      data
     });
   }
 

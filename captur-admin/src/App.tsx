@@ -1,21 +1,32 @@
-import { memo, useEffect } from 'react';
-import { ConfigProvider } from 'antd';
-import { useRecoilValue } from 'recoil';
-import { antdMessageState, i18nLocaleState } from '@/store/i18n';
-import { setHtmlLang } from '@/utils/i18n';
-import Routes from '@/config/routes';
+import React, { Suspense } from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import Router from '@/routers'
+import { Provider } from 'react-redux'
+import store from '@/store'
+import { WithAuthorized } from '@/components/Authorized'
+import { SWRConfig } from 'swr'
+import { localStorageProvider } from './utils/localStorageProvider'
+import FallbackLoading from './components/FallbackLoading'
 
-export default memo(() => {
-  const i18nLocale = useRecoilValue(i18nLocaleState);
-  const antdMessage = useRecoilValue(antdMessageState);
-
-  useEffect(() => {
-    setHtmlLang(i18nLocale);
-  }, []);
-
+const App: React.FC = () => {
   return (
-    <ConfigProvider locale={antdMessage}>
-      <Routes />
-    </ConfigProvider>
-  );
-});
+    <SWRConfig
+      value={{
+        provider: localStorageProvider,
+        revalidateOnFocus: false,
+      }}
+    >
+      <Provider store={store}>
+        <BrowserRouter>
+          <WithAuthorized>
+            <Suspense fallback={<FallbackLoading />}>
+              <Router />
+            </Suspense>
+          </WithAuthorized>
+        </BrowserRouter>
+      </Provider>
+    </SWRConfig>
+  )
+}
+
+export default App
