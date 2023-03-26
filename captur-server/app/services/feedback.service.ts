@@ -6,7 +6,12 @@ import { Prisma } from '@prisma/client'
 export class FeedbackService {
   async create(data: Omit<Prisma.FeedbackCreateInput, 'createAt'>) {
     return prisma.feedback.create({
-      data,
+      data: {
+        appId: data.appId,
+        email: data.email,
+        description: data.description,
+        recordJson: data.recordJson,
+      },
     })
   }
 
@@ -19,10 +24,13 @@ export class FeedbackService {
     })
   }
 
+
   async getList(data: Pick<Prisma.FeedbackCreateInput,  'appId' | 'description' | 'email' | 'valid'>) {
+    const { appId, email } = data
     return prisma.feedback.findMany({
       where: {
-        ...data
+        appId,
+        email
       }
     })
   }

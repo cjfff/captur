@@ -19614,8 +19614,11 @@ function gp() {
     store: d.useMemo(() => new RT(e == null ? void 0 : e.uid), [e == null ? void 0 : e.uid])
   };
 }
-const _T = "/captur/apis", AT = async (e) => fetch({
-  url: `${e.prefix}${_T}/feedback`,
+const _T = "/captur/apis", AT = async (e) => fetch(`${e.prefix}${_T}/feedback`, {
+  headers: {
+    "Content-Type": "application/json"
+  },
+  method: "POST",
   body: JSON.stringify(e)
 }), MT = (e) => e.replace(/[A-Z]/g, (t) => `_${t.toLowerCase()}`);
 function FT() {
@@ -19644,7 +19647,8 @@ function FT() {
         prefix: i == null ? void 0 : i.prefix
       };
       await AT(f), Jy.success(l("feedback.success")), o();
-    } catch {
+    } catch (u) {
+      console.log(u);
     } finally {
       t(!1);
     }

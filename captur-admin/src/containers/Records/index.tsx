@@ -7,7 +7,6 @@ import styles from './index.module.less'
 
 import type { ProColumns } from '@ant-design/pro-table'
 import ProTable from '@ant-design/pro-table'
-import { STATUS_TYPES_ENUM } from './const'
 
 export type TableListItem = {
   key: number
@@ -21,92 +20,39 @@ export type TableListItem = {
 
 const columns: ProColumns<TableListItem>[] = [
   {
-    title: '用户反馈邮箱',
+    title: 'feedback email',
     width: 160,
     dataIndex: 'email',
     copyable: true,
   },
   {
-    title: '反馈内容',
+    title: 'feedback content',
     width: 80,
     hideInSearch: true,
     dataIndex: 'description',
   },
   {
-    title: 'sellerId',
-    width: 160,
-    dataIndex: 'seller_id',
-    hideInSearch: true,
-    copyable: true,
-  },
-  {
-    title: '国家/地区',
+    title: 'createTime',
     width: 140,
-    hideInSearch: true,
-    dataIndex: 'country_code',
-  },
-  {
-    title: '当前处理状态',
-    width: 80,
-    hideInSearch: true,
-    dataIndex: 'process_status',
-    renderText: (text: keyof typeof STATUS_TYPES_ENUM) => {
-      return STATUS_TYPES_ENUM[text]
-    },
-  },
-  {
-    title: '创建时间',
-    width: 140,
-    dataIndex: 'create_time',
+    dataIndex: 'createdAt',
     hideInSearch: true,
     valueType: 'dateTime',
   },
-
+  ,
   {
-    title: '更新时间',
-    width: 140,
-    dataIndex: 'update_time',
-    hideInSearch: true,
-    valueType: 'dateTime',
-  },
-
-  // {
-  //   title: '状态',
-  //   width: 80,
-  //   dataIndex: 'status',
-  //   initialValue: 'all',
-  //   valueEnum: {
-  //     all: { text: '全部', status: 'Default' },
-  //     close: { text: '关闭', status: 'Default' },
-  //     running: { text: '运行中', status: 'Processing' },
-  //     online: { text: '已上线', status: 'Success' },
-  //     error: { text: '异常', status: 'Error' },
-  //   },
-  // },
-  {
-    title: '操作',
-    renderText: (item) => {
-      const { sentry_message_id, _id } = item
+    title: 'operation',
+    renderText: (item: any) => {
+      const { id } = item
       return (
         <>
-          <a href={`${location.pathname}/${_id}`} target="_blank" rel="noopener noreferrer" key="view">
-            详情
+          <a href={`${location.pathname}/${id}`} target="_blank" rel="noopener noreferrer" key="view">
+            detail
           </a>
-          {sentry_message_id && (
-            <a
-              href={`https://sentry-new.myshopline.com/organizations/logistics-nk/issues/?query=${sentry_message_id}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              key="view"
-            >
-              sentry
-            </a>
-          )}
         </>
       )
     },
   },
-]
+] as any
 
 export default () => {
   const { appId } = useParams<{ appId: string }>()
@@ -142,30 +88,13 @@ export default () => {
             success: true,
           })
         }}
-        rowKey="_id"
-        pagination={{
-          total: data?.data?.totalDocs || 0,
-          showQuickJumper: true,
-          pageSizeOptions: [10, 20, 50],
-          defaultPageSize: 10,
-          showSizeChanger: true,
-        }}
+        rowKey="id"
+        pagination={false}
         search={{
           labelWidth: 'auto',
         }}
-        dataSource={data?.data?.docs || []}
+        dataSource={(data?.data as any) || []}
         dateFormatter="string"
-        // headerTitle="Feedback"
-        toolBarRender={() => [
-          // <Button key="show">查看日志</Button>,
-          // <Button key="out">
-          //   导出数据
-          //   <DownOutlined />
-          // </Button>,
-          // <Button type="primary" key="primary">
-          //   创建应用
-          // </Button>,
-        ]}
       />
     </div>
   )

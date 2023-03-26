@@ -17,7 +17,7 @@ model App {
 
 model Feedback {
   id        Int      @id @default(autoincrement())
-  appId Int
+  appId String
   email String
   description String
   valid Int @default(1)

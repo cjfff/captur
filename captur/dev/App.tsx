@@ -21,11 +21,13 @@ const App: React.FC = () => {
     <>
       12312312312
       <Feedback
-        email="cjfff@shoplineapp.com"
+        appId="name"
+        email="cjfff1996@gmail.com"
         checkbox
         checkboxComponentFunction={renderLawCheckTips}
         uid="cjfff"
         brand="OneShip"
+        prefix="http://localhost:3001"
       />
     </>
   );

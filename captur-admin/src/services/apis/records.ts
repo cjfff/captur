@@ -5,9 +5,9 @@ type IRecordQuery = {
 }
 
 export const getRecords = (data: IRecordQuery) => {
-  return API.admin.post<any>('/ones/api/v1/feedback/records', data)
+  return API.admin.get<any>('/captur/apis/feedback/list', {params: data})
 }
 
 export const getRecordDetail = (id: string) => {
-  return API.admin.post<any>(`/ones/api/v1/feedback/record/${id}`)
+  return API.admin.get<any>(`/captur/apis/feedback/${id}`)
 }

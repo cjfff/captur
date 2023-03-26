@@ -28,15 +28,15 @@ const loadePromise = () =>
     })
   )
 
-const prefix = 'https://cdn.oneship.io/'
 
 export function useLoadReplay(data: any) {
   useEffect(() => {
+    const events = data?.recordJson ? JSON.parse(data?.recordJson) : []
+
     const run = async () => {
       try {
-        const url = `${prefix}${data.replay_url}`
 
-        const [events] = await Promise.all([fetch(url).then((res) => res.json()), loadePromise()])
+         await Promise.all([loadePromise()])
 
         // eslint-disable-next-line no-new
         new (window as any).rrwebPlayer({
@@ -56,7 +56,8 @@ export function useLoadReplay(data: any) {
       }
     }
 
-    if (data?.replay_url) {
+
+    if (events?.length) {
       run()
     }
   }, [data])

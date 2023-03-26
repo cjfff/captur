@@ -9,8 +9,8 @@ https://www.unpkg.com/
 
 This is a example
 ```
-<script src="https://unpkg.com/@chenxxx/captur@0.0.2/dist/style.css"></script>
-<script src="https://unpkg.com/@chenxxx/captur@0.0.2/dist/Captur.js"></script>
+<link  rel="stylesheet" href="https://unpkg.com/@chenxxx/captur@0.0.3-beta2/dist/style.css"></link>
+<script src="https://unpkg.com/@chenxxx/captur@0.0.3-beta2/dist/Captur.js"></script>
 ```
 
 init

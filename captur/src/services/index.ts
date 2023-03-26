@@ -19,6 +19,7 @@ export const createFeedback = async (data: ICreateFeedback) => {
     headers: {
       "Content-Type": "application/json",
     },
+    method: 'POST',
     body: JSON.stringify(data)
   })
 }

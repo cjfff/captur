@@ -44,6 +44,7 @@ export function useSubmit() {
       message.success(t("feedback.success"));
       reset();
     } catch (error) {
+      console.log(error);
     } finally {
       setLoading(false);
     }
