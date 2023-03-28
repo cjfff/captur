@@ -1,5 +1,14 @@
 # Capture
 
+## start dev
+the entry file is the dev/App.tsx
+
+```shell
+yarn
+
+yarn dev
+```
+
 ## with cdn usage
 
 

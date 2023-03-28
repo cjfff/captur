@@ -26,7 +26,6 @@ const App: React.FC = () => {
         checkbox
         checkboxComponentFunction={renderLawCheckTips}
         uid="cjfff"
-        brand="OneShip"
         prefix="http://localhost:3001"
       />
     </>

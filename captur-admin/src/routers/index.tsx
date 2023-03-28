@@ -9,7 +9,7 @@ const routerConfig: RouteConfig[] = [
   {
     path: '/',
     component() {
-      return <Redirect to="/translate/i18n" />
+      return <Redirect to="/admin/projects" />
     },
     exact: true,
   },
