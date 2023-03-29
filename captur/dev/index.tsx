@@ -1,13 +1,10 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from "react-dom/client";
 import App from './App'
 
 const render = () => {
-  // 加载完语言之后再展示root
-  ReactDOM.render(
-      <App />,
-    document.getElementById('root')
-  )
+  const root = ReactDOM.createRoot(document.getElementById("root")!);
+  root.render(<App />);
 }
 
 render();
