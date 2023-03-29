@@ -50,8 +50,9 @@ live-server --port=9999
 http://127.0.0.1:9999/index2.html
 ```
 
+<!-- here is the example calling code, see the details in index2.html  -->
 ```js
-<script src="">
+<script>
     window.capturRender({
         appId: 'name',
         prefix: 'http://localhost:3001'
