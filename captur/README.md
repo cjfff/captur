@@ -1,7 +1,7 @@
 # Capture
 
-## start dev
-the entry file is the dev/App.tsx
+## quick start
+note: start the server together
 
 ```shell
 yarn
@@ -9,7 +9,7 @@ yarn
 yarn dev
 ```
 
-## usage
+## cdn usage
 
 
 You should according to the unpkg form to access the cdn files
@@ -22,8 +22,10 @@ This is a example
 
 run this function can render the feedback component in another project, and the config is the component's config, you should at least pass the appId onto it let it can work.
 
+and the config details you can see in the src/type.ts
+
 ```js
-window.capturRender({})
+window.capturRender(config)
 
 and if you want to update config
 
@@ -33,7 +35,7 @@ widow.updateConfig(config)
 note: how you test your cdn files, you can open the index2.html change the cdn link to updatest and then see what happens.
 
 
-## example of how to use in project 
+## example of how to use with cdn in project 
 
 You can see the index2.html and run a file server to see what happen. before start it you should start the server.
 
