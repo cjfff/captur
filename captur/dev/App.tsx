@@ -1,22 +1,7 @@
 import Feedback from "../src";
-import React, { useCallback, useState } from "react";
-
-// import { Modal } from "antd";
-// import "antd/dist/antd.css";
+import React from "react";
 
 const App: React.FC = () => {
-  const [visible, setVisible] = useState<boolean>(false);
-
-  const renderLawCheckTips = useCallback((text) => {
-    const changePolicy = (e: React.MouseEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-      setVisible((value) => !value);
-    };
-
-    return <span onClick={changePolicy}>{text}</span>;
-  }, []);
-
   return (
     <>
       12312312312
@@ -24,7 +9,6 @@ const App: React.FC = () => {
         appId="name"
         email="cjfff1996@gmail.com"
         checkbox
-        checkboxComponentFunction={renderLawCheckTips}
         uid="cjfff"
         prefix="http://localhost:3001"
       />
